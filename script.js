@@ -1,5 +1,5 @@
-const X_CLASS = "x";
-const O_CLASS = "o";
+const x = "x";
+const o = "o";
 const endGameText = document.querySelector(".message-text");
 const restartButton = document.getElementById("restart-button");
 const messageBox = document.querySelector(".message-box");
@@ -22,8 +22,8 @@ restartButton.addEventListener("click", startGame);
 function startGame() {
   oTurn = false;
   cells.forEach((cell) => {
-    cell.classList.remove("x");
-    cell.classList.remove("o");
+    cell.classList.remove(x);
+    cell.classList.remove(o);
     cell.removeEventListener("click", clicked);
     cell.addEventListener("click", clicked, { once: true });
   });
@@ -33,7 +33,7 @@ function startGame() {
 
 function clicked(e) {
   const cell = e.target;
-  const currentTurn = oTurn ? O_CLASS : X_CLASS;
+  const currentTurn = oTurn ? o : x;
   // place the mark
   placeMark(cell, currentTurn);
   //check for win
@@ -58,7 +58,7 @@ function endGame(draw) {
 function isDraw() {
   return [...cells].every((cell) => {
     //turn cells into an arry wo every can be used
-    return cell.classList.contains(X_CLASS) || cell.classList.contains(O_CLASS);
+    return cell.classList.contains(x) || cell.classList.contains(o);
   });
 }
 
@@ -71,12 +71,12 @@ function swapTurns() {
 }
 
 function howerClass() {
-  board.classList.remove(X_CLASS);
-  board.classList.remove(O_CLASS);
+  board.classList.remove(x);
+  board.classList.remove(o);
   if (oTurn) {
-    board.classList.add(O_CLASS);
+    board.classList.add(o);
   } else {
-    board.classList.add(X_CLASS);
+    board.classList.add(x);
   }
 }
 
