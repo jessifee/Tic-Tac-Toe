@@ -1,0 +1,114 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+:root {
+  --cell-size: 160px;
+}
+body {
+  margin: 0;
+  font-family: baskerville;
+  background-image: url(https://images.squarespace-cdn.com/content/v1/5a2613f6be42d61192e3e478/1582999868688-PEVK3HU4FN1D9V5UDM4K/Screen+Shot+2020-02-29+at+1.07.46+PM.png?format=1000w);
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+}
+.board {
+  width: 100vh;
+  height: 100vh;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  justify-items: center;
+  align-items: center;
+  grid-template-columns: repeat(3, auto);
+}
+.cell {
+  width: var(--cell-size);
+  height: var(--cell-size);
+  border: 5px solid black;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.cell:first-child,
+.cell:nth-child(2),
+.cell:nth-child(3) {
+  border-top: none;
+}
+
+.cell:nth-child(3n + 1) {
+  border-left: none;
+}
+.cell:nth-child(3n + 3) {
+  border-right: none;
+}
+.cell:last-child,
+.cell:nth-child(8),
+.cell:nth-child(7) {
+  border-bottom: none;
+}
+
+.cell.x {
+  background-image: url(https://images.vexels.com/media/users/3/155473/isolated/preview/faa3172dd52035d0c227d7ecab4d6024-x-cross-doodle.png);
+  background-size: 110%;
+  background-position: center;
+  cursor: not-allowed;
+}
+.cell.o {
+  background-image: url(https://www.nicepng.com/png/full/371-3713738_select-the-sign-transparent-letter-o-circle.png);
+  background-size: 80%;
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: not-allowed;
+}
+
+.board.x .cell:not(.x):not(.o):hover {
+  background-image: url(https://images.vexels.com/media/users/3/155473/isolated/preview/faa3172dd52035d0c227d7ecab4d6024-x-cross-doodle.png);
+  background-size: 110%;
+  background-position: center;
+  opacity: 40%;
+}
+
+.board.o .cell:not(.x):not(.o):hover {
+  background-image: url(https://www.nicepng.com/png/full/371-3713738_select-the-sign-transparent-letter-o-circle.png);
+  background-size: 80%;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 40%;
+}
+
+.message-box {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: rgba(117, 155, 211, 0.8);
+
+  font-size: 100px;
+}
+
+#restart-button {
+  cursor: pointer;
+  font-family: baskerville;
+  background-color: rgb(52, 103, 180);
+  font-size: 50px;
+  border-style: solid;
+  border-color: rgb(38, 79, 141);
+  border-radius: 6px;
+  box-shadow: 8px 8px 8px rgb(38, 79, 141);
+}
+
+.message-box.show {
+  display: flex;
+}
